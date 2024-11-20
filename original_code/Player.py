@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.screen_size = screen_size
         print("Spawning player")
-        self.surf = pygame.image.load('images/idle.png').convert_alpha()
+        self.surf = pygame.image.load('images/player.png').convert_alpha()
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//2, self.screen_size[1]//2)
