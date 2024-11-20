@@ -17,8 +17,8 @@
 ####################################################################################
 
 import pygame
-from Fruits import apple
-from Player import player
+from Fruits import fruits
+from Player import
 
 
 
