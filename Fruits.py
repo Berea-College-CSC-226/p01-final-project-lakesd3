@@ -21,18 +21,18 @@ import random
 
 class Fruits(pygame.sprite.Sprite):
     move_distance = 10
-    directions = ["north", "east", "south", "west"]
+    directions = ["south"]
 
     def __init__(self, screen_size):
         """
-        Represents the Good NPC in the game.
+        Represents the falling red apple in the game.
 
         :param screen_size: size of the window, for ensuring the NPC stays on screen
         """
         print("Spawning Apple")
         self.screen_size = screen_size
         super().__init__()
-        self.surf = pygame.image.load('images/red_apple.png').convert_alpha()
+        self.surf = pygame.image.load('images/apple.png')
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//4, self.screen_size[1]//4)
@@ -41,7 +41,7 @@ class Fruits(pygame.sprite.Sprite):
 
     def get_direction(self):
         """
-        Keeps the NPC on the screen.
+        Makes the apple fall
 
         :return: None
         """

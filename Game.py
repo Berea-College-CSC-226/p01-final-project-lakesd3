@@ -50,8 +50,8 @@ class Game:
                     self.running = False
 
             # Handle user and game events next
-            if pygame.sprite.spritecollide(self.Player, [self.Fruits], False):
-               self.running = False
+            if pygame.sprite.spritecollide(self.player, [self.apple], False):
+               pass
             else:
                 # Keep playing!
                 self.player.movement(pygame.key.get_pressed())
