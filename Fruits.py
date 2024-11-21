@@ -16,6 +16,7 @@
 # Attribution-Noncommercial-Share Alike 3.0 United States License.
 ####################################################################################
 import pygame, random
+import random
 
 
 class Fruits(pygame.sprite.Sprite):
@@ -28,15 +29,15 @@ class Fruits(pygame.sprite.Sprite):
 
         :param screen_size: size of the window, for ensuring the NPC stays on screen
         """
-        print("Spawning NPC")
+        print("Spawning Apple")
         self.screen_size = screen_size
         super().__init__()
-        self.surf = pygame.image.load('images/apple.png').convert_alpha()
+        self.surf = pygame.image.load('images/red_apple.png').convert_alpha()
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//4, self.screen_size[1]//4)
         self.path = random.choice(self.directions)
-        self.position = [0,0]
+        self.position = [random.randint(-100, 100), 100]
 
     def get_direction(self):
         """
@@ -45,15 +46,8 @@ class Fruits(pygame.sprite.Sprite):
         :return: None
         """
         if self.rect.bottom >= self.screen_size[1]:
-            self.path = "north"
-        if self.rect.top <= 0:
             self.path = "south"
-        if self.rect.left <= 0:
-            self.path = "east"
-        if self.rect.right >= self.screen_size[0]:
-            self.path = "west"
-        elif random.random() > .95:
-            self.path = random.choice(self.directions)
+
 
     def movement(self):
         """
@@ -61,18 +55,10 @@ class Fruits(pygame.sprite.Sprite):
 
         :return: None
         """
-        if self.path == "north":
-            self.rect.move_ip(0, -self.move_distance)
-            self.position[1] -= self.move_distance
-        elif self.path == "south":
+
+        if self.path == "south":
             self.rect.move_ip(0, self.move_distance)
             self.position[1] += self.move_distance
-        if self.path == "east":
-            self.rect.move_ip(self.move_distance, 0)
-            self.position[0] -= self.move_distance
-        if self.path == "west":
-            self.rect.move_ip(-self.move_distance, 0)
-            self.position[0] += self.move_distance
 
         self.get_direction()
 

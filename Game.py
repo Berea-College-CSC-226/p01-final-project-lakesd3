@@ -32,7 +32,6 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode(self.size)
         self.screen.fill('#9CBEBA')
-        self.clock = pygame.time.Clock()
         self.apple = Fruits(self.size)
         self.player = Player(self.size)
 
@@ -52,10 +51,7 @@ class Game:
 
             # Handle user and game events next
             if pygame.sprite.spritecollide(self.Player, [self.Fruits], False):
-                # Prints the game ending text to the screen
-                font = pygame.font.SysFont("ComicSans", 36)
-                txt = font.render('You caught me!', True, "darkblue")
-                self.screen.blit(txt, (self.size[0]//2, self.size[1]-100))
+               self.running = False
             else:
                 # Keep playing!
                 self.player.movement(pygame.key.get_pressed())
@@ -64,7 +60,6 @@ class Game:
                 self.screen.blit(self.player.surf, self.player.rect)
                 self.screen.blit(self.apple.surf, self.apple.rect)
             pygame.display.update()
-            self.clock.tick(24)
 
         pygame.quit()
 
