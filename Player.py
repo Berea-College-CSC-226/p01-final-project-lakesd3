@@ -1,6 +1,6 @@
 ######################################################################
-# Author: Dr. Scott Heggen        TODO: Change this to your names
-# Username: heggens               TODO: Change this to your usernames
+# Author: CJ Spencer, Dawson Lakes
+# Username: spencerc, lakesd3
 #
 # Assignment: T11: The Legend of Tuna: Breath of Catnip
 #
@@ -34,6 +34,8 @@ class Player(pygame.sprite.Sprite):
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//2, self.screen_size[1]//2)
+        self.rectx = [-300]
+        self.recty = [-300]
 
 
     def movement(self, keys):
@@ -47,10 +49,8 @@ class Player(pygame.sprite.Sprite):
 
         if keys[pygame.K_RIGHT]:
             self.rect.move_ip(3, 0)
-
         elif keys[pygame.K_LEFT]:
             self.rect.move_ip(-3, 0)
-
         else:
             self.rect.move_ip(0, 0)
 
