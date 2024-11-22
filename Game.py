@@ -32,9 +32,9 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode(self.size)
         self.screen.fill('#9CBEBA')
-        self.apple = Fruits(self.size)
+        self.clock = pygame.time.Clock()
         self.player = Player(self.size)
-
+        self.apple = Fruits(self.size)
 
 
     def run(self):
@@ -48,18 +48,13 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
-
-            # Handle user and game events next
-            if pygame.sprite.spritecollide(self.player, [self.apple], False):
-               pass
-            else:
-                # Keep playing!
                 self.player.movement(pygame.key.get_pressed())
                 self.apple.movement()
                 self.screen.fill('#9CBEBA')
                 self.screen.blit(self.player.surf, self.player.rect)
                 self.screen.blit(self.apple.surf, self.apple.rect)
             pygame.display.update()
+            self.clock.tick(24)
 
         pygame.quit()
 
