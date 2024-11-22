@@ -45,9 +45,9 @@ class Player(pygame.sprite.Sprite):
         :return: None
         """
 
-        if keys[pygame.K_RIGHT]:
+        while keys[pygame.K_RIGHT]:
             self.rect.move_ip(3, 0)
-        elif keys[pygame.K_LEFT]:
+        while keys[pygame.K_LEFT]:
             self.rect.move_ip(-3, 0)
 
 
