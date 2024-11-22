@@ -47,6 +47,7 @@ class Player(pygame.sprite.Sprite):
 
         while keys[pygame.K_RIGHT]:
             self.rect.move_ip(3, 0)
+
         while keys[pygame.K_LEFT]:
             self.rect.move_ip(-3, 0)
 
