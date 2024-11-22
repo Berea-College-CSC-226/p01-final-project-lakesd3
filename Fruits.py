@@ -38,7 +38,7 @@ class Fruits(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//4, self.screen_size[1]//4)
         self.path = random.choice(self.directions)
-        self.position = [50, 50]
+        self.position = [0, 0]
 
     def get_direction(self):
         """
