@@ -1,10 +1,10 @@
 ######################################################################
-# Author: Dr. Scott Heggen        TODO: Change this to your names
-# Username: heggens               TODO: Change this to your usernames
+# Author: CJ Spencer, Dawson Lakes
+# Username: spencerc, lakesd3
 #
-# Assignment: T11: The Legend of Tuna: Breath of Catnip
+# Assignment: P01 Final project
 #
-# Purpose: Learn about classes, inheritance, and Pygame
+# Purpose: Make a cool game
 ######################################################################
 # Acknowledgements:
 #
