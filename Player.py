@@ -34,6 +34,8 @@ class Player(pygame.sprite.Sprite):
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//2, self.screen_size[1]//2)
+        self.rect.bottom = self.screen_size[1]
+        self.rect.centerx = self.screen_size[0] // 2
 
 
     def movement(self, keys):
@@ -44,12 +46,9 @@ class Player(pygame.sprite.Sprite):
 
         :return: None
         """
-
         if keys[pygame.K_RIGHT]:
-            self.rect.move_ip(3, 0)
+            self.rect.move_ip(30, 0)
         elif keys[pygame.K_LEFT]:
-            self.rect.move_ip(-3, 0)
-        else:
-            self.rect.move_ip(0, 0)
+            self.rect.move_ip(-30, 0)
 
 

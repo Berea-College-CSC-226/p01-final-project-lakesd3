@@ -17,7 +17,7 @@
 ####################################################################################
 
 import pygame
-from Fruits import Fruits
+from Fruits import Fruits, Fruit1, Fruit2
 from Player import Player
 
 
@@ -30,11 +30,16 @@ class Game:
         self.size = 800, 600
         self.running = True
         pygame.init()
+        self.background_image = pygame.image.load("images/tree.png")
+        self.background_image = pygame.transform.scale(self.background_image, self.size)
         self.screen = pygame.display.set_mode(self.size)
         self.screen.fill('#9CBEBA')
         self.clock = pygame.time.Clock()
         self.player = Player(self.size)
-        self.apple = Fruits(self.size)
+        self.fruit = Fruits
+        self.apple = Fruit1(self.size)
+        self.green_apple = Fruit2(self.size)
+        self.score = 0
 
 
     def run(self):
@@ -43,21 +48,43 @@ class Game:
 
         :return: None
         """
+        game_over_font = pygame.font.Font(None, 72)
+
         while self.running:
+            # Check for apple going below screen border
+            if self.apple.rect.bottom >= self.size[1] or self.green_apple.rect.bottom >= self.size[1]:
+                self.running = False  # End game
+
+            if pygame.sprite.collide_rect(self.player, self.apple):
+                self.score += 1
+                self.apple.reset()
+            if pygame.sprite.collide_rect(self.player, self.green_apple):
+                self.score += 1
+                self.green_apple.reset()
             # Handle game ending first
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
                 self.player.movement(pygame.key.get_pressed())
                 self.apple.movement()
+                self.green_apple.movement()
                 self.screen.fill('#9CBEBA')
+                self.screen.blit(self.background_image, (0, 0))
                 self.screen.blit(self.player.surf, self.player.rect)
                 self.screen.blit(self.apple.surf, self.apple.rect)
+                self.screen.blit(self.green_apple.surf, self.green_apple.rect)
+                font = pygame.font.Font(None, 36)
+                score_text = font.render(f"Score: {self.score}", True, (0, 0, 0))
+                self.screen.blit(score_text, (10, 10))
+
+            if not self.running:
+                game_over_text = game_over_font.render("Game Over!", True, (255, 0, 0))
+                self.screen.blit(game_over_text,(self.size[0] // 2 - game_over_text.get_width() // 2, self.size[1] // 3))
+
             pygame.display.update()
             self.clock.tick(24)
 
         pygame.quit()
-
 
 def main():
     """
