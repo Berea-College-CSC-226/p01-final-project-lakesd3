@@ -73,13 +73,13 @@ Indicate what percentage of the project you have left to complete and how confid
 
 ```
     **I am very confident in our ability to complete this project. All that remains is creating the life system, and if
-    time allots, adding a retry button widget that will replay the game
+    time allots, adding a retry button widget that will replay the game.
 ```
 
 ---
 
 ## Milestone 4: Final Code, Presentation, Demo
-
+    
 ### ❗User Instructions
 In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
 in PyCharm. 
