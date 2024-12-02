@@ -1,12 +1,12 @@
 ######################################################################
-# Author: CJ Spencer, Dawson Lakes
-# Username: spencerc, lakesd3
+# Author: CJ Spencer, Dawson Lakes      TODO: Change this to your names
+# Username: spencerc, lakesd3            TODO: Change this to your usernames
 #
-# Assignment: P01 Final project
+# Assignment: Final Project
 #
 # Purpose: Make a cool game
 ######################################################################
-# Acknowledgements:https://stackoverflow.com/questions/70058132/how-do-i-make-a-timer-in-python
+# Acknowledgements:
 ####################################################################################
 
 import pygame
@@ -35,6 +35,31 @@ class Game:
         self.score = 0
         self.lives = 3
 
+    def game_over(self):
+        """
+        Displays the game-over screen.
+        """
+        game_over_font = pygame.font.Font(None, 80)
+        game_over_text = game_over_font.render("Game Over!", True, (255, 0, 0))
+        restart_text = pygame.font.Font(None, 36).render("Press R to Restart or Q to Quit", True, (255, 255, 255))
+
+        while self.game_over_flag:
+            self.screen.fill((0, 0, 0))
+            self.screen.blit(game_over_text, (self.size[0] // 2 - game_over_text.get_width() // 2, self.size[1] // 3))
+            self.screen.blit(restart_text, (self.size[0] // 2 - restart_text.get_width() // 2, self.size[1] // 2))
+            pygame.display.update()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.game_over_flag = False
+                    self.running = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_r:
+                        self.__init__()  # Restart the game
+                        self.run()
+                    elif event.key == pygame.K_q:
+                        self.game_over_flag = False
+                        self.running = False
 
     def run(self):
         """
@@ -42,10 +67,11 @@ class Game:
 
         :return: None
         """
-        game_over_font = pygame.font.Font(None, 72)
-
         while self.running:
             # Check for apple going below screen border
+            if self.apple.rect.bottom >= self.size[1] or self.green_apple.rect.bottom >= self.size[1]:
+                self.running = False
+                self.game_over_flag = True  # Trigger game-over screen
             if self.green_apple.rect.bottom >= self.size[1]:
                 self.green_apple.reset()
                 self.lives -= 1
@@ -88,7 +114,11 @@ class Game:
             pygame.display.update()
             self.clock.tick(24)
 
+        if self.game_over_flag:
+            self.game_over()
+
         pygame.quit()
+
 
 def main():
     """
