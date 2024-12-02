@@ -33,6 +33,7 @@ class Game:
         self.apple = Fruit1(self.size)
         self.green_apple = Fruit2(self.size)
         self.score = 0
+        self.lives = 3
 
 
     def run(self):
@@ -45,8 +46,17 @@ class Game:
 
         while self.running:
             # Check for apple going below screen border
-            if self.apple.rect.bottom >= self.size[1] or self.green_apple.rect.bottom >= self.size[1]:
-                self.running = False  # End game
+            if self.green_apple.rect.bottom >= self.size[1]:
+                self.green_apple.reset()
+                self.lives -= 1
+                if self.lives == 0:
+                    self.running = False  # End game
+            if self.apple.rect.bottom >= self.size[1]:
+                self.apple.reset()
+                self.lives -= 1
+                if self.lives == 0:
+                    self.running = False  # End game
+
 
             if pygame.sprite.collide_rect(self.player, self.apple):
                 self.score += 1
@@ -68,6 +78,8 @@ class Game:
                 font = pygame.font.Font(None, 36)
                 score_text = font.render(f"Score: {self.score}", True, (0, 0, 0))
                 self.screen.blit(score_text, (10, 10))
+                lives_text = font.render(f"Lives: {self.lives}", True, (0, 0, 0))
+                self.screen.blit(lives_text, (700, 10))
 
             if not self.running:
                 game_over_text = game_over_font.render("Game Over!", True, (255, 0, 0))
