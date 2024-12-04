@@ -41,7 +41,7 @@ class Game:
         game_over_font = pygame.font.Font(None, 80)
         game_over_text = game_over_font.render("Game Over!", True, (255, 0, 0))
         restart_text = pygame.font.Font(None, 36).render("Press R to Restart or Q to Quit", True, (255, 255, 255))
-
+#S
         while self.game_over_flag:
             self.screen.fill((0, 0, 0))
             self.screen.blit(game_over_text, (self.size[0] // 2 - game_over_text.get_width() // 2, self.size[1] // 3))
