@@ -13,7 +13,7 @@ import time
 
 
 class Fruits(pygame.sprite.Sprite):
-    move_distance = 10
+    move_distance = 8
     directions = ["south"]
 
     def __init__(self, screen_size, image_path):
@@ -24,7 +24,6 @@ class Fruits(pygame.sprite.Sprite):
         """
         self.screen_size = screen_size
         super().__init__()
-        print(f"Spawning {self.__class__.__name__}")  # Print specific object name
         self.surf = pygame.image.load(image_path)
         self.surf = pygame.transform.scale(self.surf, (25, 25))
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
@@ -127,7 +126,7 @@ class Fruit2(Fruits):
             self.start_time = time.time()  # Start timer on first call
 
         current_time = time.time()
-        if current_time - self.start_time >= 2:  # Check if 2 seconds have passed
+        if current_time - self.start_time >= 3:  # Check if 2 seconds have passed
             if self.path == "south":
                 self.rect.move_ip(0, self.move_distance)
 

@@ -20,7 +20,6 @@ class Player(pygame.sprite.Sprite):
         """
         super().__init__()
         self.screen_size = screen_size
-        print("Spawning player")
         self.surf = pygame.image.load('images/player.gif').convert_alpha()
         self.surf = pygame.transform.scale(self.surf, (75, 75))
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
@@ -39,8 +38,8 @@ class Player(pygame.sprite.Sprite):
         :return: None
         """
         if keys[pygame.K_RIGHT]:
-            self.rect.move_ip(45, 0)
+            self.rect.move_ip(20, 0)
         elif keys[pygame.K_LEFT]:
-            self.rect.move_ip(-45, 0)
+            self.rect.move_ip(-20, 0)
 
 
