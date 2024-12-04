@@ -45,11 +45,6 @@ class Fruits(pygame.sprite.Sprite):
         if self.rect.bottom >= self.screen_size[1]:
             self.path = "south"
 
-    def reset(self):
-        # Set apple to top of the screen with random x position
-        self.rect.top = 0
-        self.rect.x = random.randint(0, self.screen_size[0] - self.rect.width)
-
     def movement(self):
         """
         Moves the NPC around.

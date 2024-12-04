@@ -6,13 +6,16 @@
 #
 # Purpose: Make a cool game
 ######################################################################
-# Acknowledgements:
+# Acknowledgements:https://stackoverflow.com/questions/70058132/how-do-i-make-a-timer-in-python
+# https://stackoverflow.com/questions/46312470/difference-between-methods-and-attributes-in-python
+# https://stackoverflow.com/questions/23703863/in-python-is-object-equal-to-anything-besides-itself
+# https://stackoverflow.com/questions/51342774/how-to-flip-image-with-opencv-and-python-without-cv2-flip
+# https://www.geeksforgeeks.org/how-to-move-your-game-character-around-in-pygame/
 ####################################################################################
 
 import pygame
 from Fruits import Fruits, Fruit1, Fruit2
 from Player import Player
-
 
 
 class Game:
@@ -22,6 +25,7 @@ class Game:
         """
         self.size = 800, 600
         self.running = True
+        self.game_over_flag = False
         pygame.init()
         self.background_image = pygame.image.load("images/tree.png")
         self.background_image = pygame.transform.scale(self.background_image, self.size)
@@ -63,26 +67,22 @@ class Game:
 
     def run(self):
         """
-        Runs the game forever
-
-        :return: None
+        Runs the game.
         """
         while self.running:
             # Check for apple going below screen border
-            if self.apple.rect.bottom >= self.size[1] or self.green_apple.rect.bottom >= self.size[1]:
-                self.running = False
-                self.game_over_flag = True  # Trigger game-over screen
             if self.green_apple.rect.bottom >= self.size[1]:
                 self.green_apple.reset()
                 self.lives -= 1
                 if self.lives == 0:
                     self.running = False  # End game
+                    self.game_over_flag = True
             if self.apple.rect.bottom >= self.size[1]:
                 self.apple.reset()
                 self.lives -= 1
                 if self.lives == 0:
-                    self.running = False  # End game
-
+                    self.running = False
+                    self.game_over_flag = True
 
             if pygame.sprite.collide_rect(self.player, self.apple):
                 self.score += 1
@@ -93,23 +93,20 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
-                self.player.movement(pygame.key.get_pressed())
-                self.apple.movement()
-                self.green_apple.movement()
-                self.screen.fill('#9CBEBA')
-                self.screen.blit(self.background_image, (0, 0))
-                self.screen.blit(self.player.surf, self.player.rect)
-                self.screen.blit(self.apple.surf, self.apple.rect)
-                self.screen.blit(self.green_apple.surf, self.green_apple.rect)
-                font = pygame.font.Font(None, 36)
-                score_text = font.render(f"Score: {self.score}", True, (0, 0, 0))
-                self.screen.blit(score_text, (10, 10))
-                lives_text = font.render(f"Lives: {self.lives}", True, (0, 0, 0))
-                self.screen.blit(lives_text, (700, 10))
 
-            if not self.running:
-                game_over_text = game_over_font.render("Game Over!", True, (255, 0, 0))
-                self.screen.blit(game_over_text,(self.size[0] // 2 - game_over_text.get_width() // 2, self.size[1] // 3))
+            self.player.movement(pygame.key.get_pressed())
+            self.apple.movement()
+            self.green_apple.movement()
+            self.screen.fill('#9CBEBA')
+            self.screen.blit(self.background_image, (0, 0))
+            self.screen.blit(self.player.surf, self.player.rect)
+            self.screen.blit(self.apple.surf, self.apple.rect)
+            self.screen.blit(self.green_apple.surf, self.green_apple.rect)
+            font = pygame.font.Font(None, 36)
+            score_text = font.render(f"Score: {self.score}", True, (0, 0, 0))
+            self.screen.blit(score_text, (10, 10))
+            lives_text = font.render(f"Lives: {self.lives}", True, (0, 0, 0))
+            self.screen.blit(lives_text, (700, 10))
 
             pygame.display.update()
             self.clock.tick(24)
@@ -122,7 +119,7 @@ class Game:
 
 def main():
     """
-    Starts the cat game.
+    Starts the game.
 
     :return: None
     """
