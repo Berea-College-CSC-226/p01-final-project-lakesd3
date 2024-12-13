@@ -126,7 +126,7 @@ class Fruit2(Fruits):
             self.start_time = time.time()  # Start timer on first call
 
         current_time = time.time()
-        if current_time - self.start_time >= 3:  # Check if 2 seconds have passed
+        if current_time - self.start_time >= 2:  # Check if 2 seconds have passed
             if self.path == "south":
                 self.rect.move_ip(0, self.move_distance)
 
