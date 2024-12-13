@@ -1,92 +1,44 @@
-# ❗CSC226 Final Project
+Dawson Lakes, CJ Spencer
 
-## Instructions
-
-❗️Exclamation Marks ❗️indicate action items; you should remove these emoji as you complete/update the items which 
-  they accompany. (This means that your final README should have no ❗️in it!)
-
-❗️**Author(s)**: Your name(s) here
-
-❗️**Google Doc Link**: Your link here
+**Google Doc Link**: https://docs.google.com/document/d/1Dl1AVSDr4NsXqB4LCj3x80LPWYMP8NgYPWeCkpAiT1M/edit?usp=sharing
 
 ---
+ 
+# https://stackoverflow.com/questions/70058132/how-do-i-make-a-timer-in-python
+# https://stackoverflow.com/questions/46312470/difference-between-methods-and-attributes-in-python
+# https://stackoverflow.com/questions/23703863/in-python-is-object-equal-to-anything-besides-itself
+# https://stackoverflow.com/questions/51342774/how-to-flip-image-with-opencv-and-python-without-cv2-flip
+# https://www.geeksforgeeks.org/how-to-move-your-game-character-around-in-pygame/
 
-## References 
-Throughout this project, you have likely used outside resources. Reference all ideas which are not your own, 
-and describe how you integrated the ideas or code into your program. This includes online sources, people who have 
-helped you, AI tools you've used, and any other resources that are not solely your own contribution. Update as you go.
+Catch A Crop
 
----
+A game that will catch falling fruit until failure from which the game will close. Everytime you collect fruit you will receive one point, points will collect in bottom or top right of the screen showing you how many fruit you have caught.
 
-## Milestone 1: Setup, Planning, Design
+**Source Assignment(s)**: `T011, H09, and T012
 
-❗️**Title**: `What is the title of your project? Be creative! Replace this block of text.`
-
-❗**Purpose**: `In a single sentence, describe WHAT your project will do. Replace this block of text.`
-
-❗️**Source Assignment(s)**: `List which original assignments you will base your project on? Replace this block of text.`
-
-❗️**CRC Card(s)**:
+**CRC Card(s)**:
   - Create a CRC card for each class that your project will implement.
   - See this link for a sample CRC card and a template to use for your own cards (you will have to make a copy to edit):
     [CRC Card Example](https://docs.google.com/document/d/1JE_3Qmytk_JGztRqkPXWACJwciPH61VCx3idIlBCVFY/edit?usp=sharing)
   - Tables in markdown are not easy, so we suggest saving your CRC card as an image and including the image(s) in the 
     README. You can do this by saving an image in the repository and linking to it. See the sample CRC card below - 
     and REPLACE it with your own:
-  
-![Don't leave me in your README!](image/crc.png "Image of CRC card as an example. Upload your CRC card(s) in place of this one. ")
 
-❗️**Branches**: This project will **require** effective use of git. 
 
-Each partner should create a branch at the beginning of the project, and stay on this branch (or branches of their 
-branch) as they work. When you need to bring each others branches together, do so by merging each other's branches 
-into your own, following the process we've discussed in previous assignments: 
 
-```
-    Branch 1 name: _____________
-    Branch 2 name: _____________
-```
----
 
-## Milestone 2: Code Setup and Issue Queue
-
-Most importantly, keep your issue queue up to date, and focus on your code. 🙃
-
-Reflect on what you’ve done so far. How’s it going? Are you feeling behind/ahead? What are you worried about? 
-What has surprised you so far? Describe your general feelings. Be honest with yourself; this section is for you, not me.
-
-```
-    **Replace this text with your reflection
-```
-
----
-
-## Milestone 3: Virtual Check-In
-
-Indicate what percentage of the project you have left to complete and how confident you feel. 
-
-❗️**Completion Percentage**: `0 - 100%`
-
-❗️**Confidence**: Describe how confident you feel about completing this project, and why. Then, describe some 
-  strategies you can employ to increase the likelihood that you'll be successful in completing this project 
-  before the deadline.
-
-```
-    **Replace this text with your reflection
-```
-
----
-
-## Milestone 4: Final Code, Presentation, Demo
-
-### ❗User Instructions
-In a paragraph, explain how to use your program. Assume the user is starting just after they hit the "Run" button 
-in PyCharm. 
+Use the left and right arrow keys to move your character left and right. Fruit will fall from the tree. You must catch the
+fruits before they hit the ground. If you catch a fruit, you will gain 1 point. If you miss, you will lose a life and the
+respect of your fellow orchard co-workers. When the game is lost, you will be prompted to press r to restart and try again,
+or q to quit the game and end the program.
 
 ### ❗Errors and Constraints
 Every program has bugs or features that had to be scrapped for time. These bugs should be tracked in the issue queue. 
 You should already have a few items in here from the prior weeks. Create a new issue for any undocumented errors and 
 deficiencies that remain in your code. Bugs found that aren't acknowledged in the queue will be penalized.
+
+The only bug we have found is that the there is no border wall stopping the player. This, the player can move off-screen.
+He can return if you press the key facing the opposite direction, but the player will go off-screen if the user chooses.
 
 ### ❗Reflection
 In three to four well-written paragraphs, address the following (at a minimum):
@@ -96,3 +48,21 @@ In three to four well-written paragraphs, address the following (at a minimum):
 - What was the hardest part of the final project?
 - What would you do differently next time, knowing what you know now?
 - (For partners) How well did you work with your partner? What made it go well? What made it challenging?
+
+    We selected our project because we wanted to create a game. Gaming is always a fun project that serves the simple purpose
+of entertainment. Despite the gameplay of our game being simple, the work that went into it was lesser so. It took a while
+to get certain aspects working, but we are happy with what we have accomplished. A catch game is simple to explain,
+and it is familiar to many gamers as a "classic" retro game.
+    We learned that even simple designs can be difficult if the developers want to add in more things or fix bugs. There 
+are so many unforeseen issues that can come up both as runtime errors and semantics. We learned that dual programming 
+makes this grueling process so much more bearable. 
+    The hardest part of this project was debugging. We struggled with getting things to operate on time and player input
+rather than ticks entire frame by frame based upon user input. We had an issue where the screen would only update or move
+each time the user clicked in a key. So, the user would have to click constantly to keep the game moving. Another issue 
+was that the player would move consistently, but the fruits would fall at the same rate as the player rather than 
+periodically falling based upon a constant timer. 
+    I had a great time working with my partner. We shared the same device for most of the programming to both stay focused
+on the same area, thus, most of the commits came from CJ's device(me). The only challenges were finding effective times 
+where we could work outside of class. We most contributed very important updates to the program, and we are both satisfied
+for the most part with how it came out. Although, we do wish we could have implemented a few other things such as a danger
+object to avoid.
